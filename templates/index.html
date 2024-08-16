@@ -1,0 +1,93 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FDR Tool</title>
+    <link
+      href="{{ url_for('static', filename='img/favicons/favicon-32x32.png')}}"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="{{ url_for('static', filename='img/favicons/favicon-16x16.png')}}"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">
+        <h3>Fixture Difficulty Rating</h3>
+      </div>
+
+      <div class="bmc">
+        <script
+          type="text/javascript"
+          src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+          data-name="bmc-button"
+          data-slug="marlonoloo"
+          data-color="#00ff87"
+          data-emoji=""
+          data-font="Cookie"
+          data-text="Buy me a coffee"
+          data-outline-color="#000000"
+          data-font-color="#000000"
+          data-coffee-color="#FFDD00"
+        ></script>
+      </div>
+
+      <!-- Form to select start and end gameweeks -->
+      <form id="gameweekForm" class="range-form">
+        <div class="range-input">
+          <label for="start_gw">Start Gameweek</label>
+          <input
+            type="number"
+            id="start_gw"
+            name="start_gw"
+            value="{{ start_gw }}"
+            min="1"
+            max="38"
+          />
+        </div>
+
+        <div class="range-input">
+          <label for="end_gw">End Gameweek</label>
+          <input
+            type="number"
+            id="end_gw"
+            name="end_gw"
+            value="{{ end_gw }}"
+            min="1"
+            max="38"
+          />
+        </div>
+
+        <div class="range-button">
+          <button type="submit">Show Fixtures</button>
+        </div>
+      </form>
+
+      <!-- Table to display fixture difficulty -->
+      <table id="fixturesTable" class="fdr-table">
+        <thead>
+          <tr></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <script>
+      const startGw = {{ start_gw }};
+      const endGw = {{ end_gw }};
+    </script>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+  </body>
+</html>
